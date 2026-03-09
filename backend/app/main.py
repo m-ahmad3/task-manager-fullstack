@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app=FastAPI(title="Task-Manager-API")
 
 app.add_middleware(
-    CORSMiddleware,
+    CORSMiddleware, # This is cross origin res sharing
     allow_origin=["localhost:5173"], allow_credentials=True,
     allow_methods=['*'], allow_headers=["*"]
 )
