@@ -7,7 +7,7 @@ from ..db import get_db
 
 rt=APIRouter()
 
-@rt.get('/', response_model=schemas.TaskResponse)
+@rt.get('/', response_model=list[schemas.TaskResponse])
 def list_tasks(status:Optional[str]=None,
               category_id:Optional[int]=None, sort:Optional[str]="created_at",
               order: Optional[str]='desc', db:Session=Depends(get_db)):
@@ -25,7 +25,7 @@ def create_task(task:schemas.TaskCreate,db:Session=Depends(get_db)):
     return crud.create_task(db, task)
 
 @rt.put('/{task_id}', response_model=schemas.TaskUpdate)
-def update_task(task_id:int, updatedTask:schemas.TaskUpdate, db:Session=Depends(get_db)):
+def update_task(task_id:int, updatedTask:schemas.TaskResponse, db:Session=Depends(get_db)):
     t=crud.update_task(db, task_id, updatedTask)
     if not t:
         raise HTTPException(status_code=404, detail="Task not found")
@@ -39,7 +39,7 @@ def delete_task(task_id:int, db:Session=Depends(get_db)):
     return d
 
 
-@rt.patch('/{task_id}/complete')
+@rt.patch('/{task_id}/complete',response_model=schemas.TaskResponse)
 def toggle_complete(task_id:int, db:Session=Depends(get_db)):
     t=crud.toggle_complete(db, task_id)
     if not t:
