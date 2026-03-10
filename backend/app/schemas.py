@@ -9,7 +9,7 @@ class CategoryCreate(BaseModel):
 class CategoryResponse(BaseModel):
     id:int
     name:str
-    class config:
+    class Config:
         from_attributes=True
 
 class TaskCreate(BaseModel):
@@ -36,15 +36,14 @@ class TaskResponse(BaseModel):
     description:Optional[str]=None
     due_date:Optional[date]=None
     priority:str
-    category_id:Optional[int]
     is_completed:bool
+    category_id:Optional[int]=None
+    category:Optional[CategoryResponse]=None
     created_at:datetime
     updated_at:datetime
-    category:Optional[CategoryResponse]=None
-    category_id:Optional[int]=None
-    
-    class config:
-        from_attribute=True
+
+    class Config:
+        from_attributes=True
 
 class UserCreate(BaseModel):
     username: str = Field(..., min_length=3, max_length=50, examples=['ahmad'])
@@ -55,7 +54,7 @@ class UserResponse(BaseModel):
     id: int
     username: str
     email: str
-    class config:
+    class Config:
         from_attributes=True
 
 class UserLogin(BaseModel):

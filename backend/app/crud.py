@@ -16,7 +16,7 @@ def create_category(db:Session, categ:schemas.CategoryCreate, user_id:int)->mode
     return new_category
 
 def delete_category(db:Session, cat_id:int, user_id:int)->bool:
-    d=db.query(models.Category).filter(models.Category.id==cat_id, models.User.id==user_id).first()
+    d=db.query(models.Category).filter(models.Category.id==cat_id, models.Category.user_id==user_id).first()
     if not d:
         return False
     db.delete(d)
@@ -77,27 +77,33 @@ def get_tasks(
         total_pages=total_pages,
     )
 
-def get_task_id(db:Session, id:int)->models.Task:
-    return db.query(models.task).filter(models.task.id==id).first()
+def get_task_id(db:Session, id:int, user_id:int)->Optional[models.Task]:
+    return db.query(models.Task).filter(models.Task.id==id, models.Task.user_id==user_id).first()
 
-def create_task(db:Session, task:schemas.TaskCreate)->models.Task:
-    new_task=models.Task(title=task.title, description=task.description, due_date=task.due_date, priority=task.priority, 
-                         category_id=task.category_id)
+def create_task(db:Session, task:schemas.TaskCreate, user_id:int)->models.Task:
+    new_task=models.Task(
+        title=task.title,
+        description=task.description,
+        due_date=task.due_date,
+        priority=task.priority,
+        category_id=task.category_id,
+        user_id=user_id,  # link task to the logged-in user
+    )
     db.add(new_task)
     db.commit()
     db.refresh(new_task)
     return new_task
 
-def delete_task(db:Session, id:int)->bool:
-    task=get_task_id(db, id)
+def delete_task(db:Session, id:int, user_id:int)->bool:
+    task=get_task_id(db, id, user_id)
     if not task:
         return False
     db.delete(task)
     db.commit()
     return True
 
-def toggle_complete(db:Session, id:int)->Optional[models.Task]:
-    task=get_task_id(db, id)
+def toggle_complete(db:Session, id:int, user_id:int)->Optional[models.Task]:
+    task=get_task_id(db, id, user_id)
     if not task:
         return None
     task.is_completed=not task.is_completed
@@ -105,14 +111,13 @@ def toggle_complete(db:Session, id:int)->Optional[models.Task]:
     db.refresh(task)
     return task
 
-def update_task(db:Session, id:int, upd_task:schemas.TaskUpdate)->Optional[models.Task]:
-    task=get_task_id(db, id)
+def update_task(db:Session, id:int, user_id:int, upd_task:schemas.TaskUpdate)->Optional[models.Task]:
+    task=get_task_id(db, id, user_id)
     if not task:
         return None
     taskData=upd_task.model_dump(exclude_unset=True)
     for key, val in taskData.items():
         setattr(task, key, val)
-    
     db.commit()
     db.refresh(task)
     return task
@@ -131,7 +136,6 @@ def create_user(db:Session, user:schemas.UserCreate)->models.User:
     return u
 
 def reorder_tasks(db: Session, task_ids: list[int], user_id: int) -> bool:
-
     for index, task_id in enumerate(task_ids):
         t = get_task_id(db, task_id, user_id)
         if t:
