@@ -22,7 +22,7 @@ def register(user: schemas.UserCreate, db:Session=Depends(get_db)):
 @rt.post('/login', response_model=schemas.Token)
 def login(user_login:schemas.UserLogin, db:Session=Depends(get_db)):
     u=crud.get_user_by_username(db, user_login.username)
-    if not u or not verify_password(user_login.password, u.password):
+    if not u or not verify_password(user_login.password, u.hashed_password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, 
                             detail="Invalid Username or Password",
                             headers={"WWW-Authenticate": "Bearer"})

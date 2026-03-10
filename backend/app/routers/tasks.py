@@ -20,7 +20,7 @@ def get_task_(task_id:int, db:Session=Depends(get_db)):
         raise HTTPException(status_code=404, detail="Task not found :(")
     return t
 
-@rt.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.TaskCreate)
+@rt.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.TaskResponse)
 def create_task(task:schemas.TaskCreate,db:Session=Depends(get_db)):
     return crud.create_task(db, task)
 

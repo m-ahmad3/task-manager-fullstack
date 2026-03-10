@@ -27,7 +27,7 @@ def verify_password(plain_p:str, hash_p:str)->bool:
 def create_access_token(data: dict, expires_delta:Optional[timedelta]=None)->str:
     to_encode=data.copy()
 
-    expire=datetime.now(timezone.utc)+expires_delta or timedelta(minutes=ACCESS_TOKEN_TIME)
+    expire=datetime.now(timezone.utc)+(expires_delta or timedelta(minutes=ACCESS_TOKEN_TIME))
 
     to_encode.update({'exp':expire})
 
