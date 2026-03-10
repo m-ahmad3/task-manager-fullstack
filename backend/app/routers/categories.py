@@ -6,11 +6,11 @@ from ..db import get_db
 
 rt=APIRouter()
 
-@rt.get('/')
+@rt.get('/', response_model=schemas.CategoryResponse)
 def list_categories(db:Session=Depends(get_db)):
     return crud.get_categories(db)
 
-@rt.post('/', status_code=status.HTTP_201_CREATED)
+@rt.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.CategoryCreate)
 def create_category(new_cat:schemas.CategoryCreate, db:Session=Depends(get_db)):
     # Faced issue of non-default arg
     return crud.create_category(db,new_cat)

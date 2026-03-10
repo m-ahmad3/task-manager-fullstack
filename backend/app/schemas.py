@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 from datetime import date, datetime
 
@@ -41,3 +41,23 @@ class TaskResponse(BaseModel):
     
     class config:
         from_attribute=True
+
+class UserCreate(BaseModel):
+    username: str = Field(..., min_length=3, max_length=50, examples=['ahmad'])
+    email: EmailStr
+    password: str =Field(..., min_length=6)
+
+class UserResponse(BaseModel):
+    id: int
+    username: str
+    email: str
+    class config:
+        from_attributes=True
+
+class UserLogin(BaseModel):
+    username:str
+    password:str
+
+class Token(BaseModel):
+    access_token:str
+    token_type:str="bearer"

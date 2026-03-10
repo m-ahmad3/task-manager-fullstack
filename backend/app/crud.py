@@ -1,6 +1,7 @@
 from typing import Optional
 from sqlalchemy.orm import Session
 from . import models, schemas
+from .auth import hash_password
 
 def get_categories(db:Session)->list[models.Category]:
     return db.query(models.Category).all()
@@ -77,3 +78,16 @@ def update_task(db:Session, id:int, upd_task:schemas.TaskUpdate)->Optional[model
     db.commit()
     db.refresh(task)
     return task
+
+def get_user_by_username(db:Session, username:str):
+    return db.query(models.User).filter(models.User.username==username).first()
+
+def get_user_by_email(db:Session, email:str):
+    return db.query(models.User).filter(models.User.email==email).first()
+
+def create_user(db:Session, user:schemas.UserCreate)->models.User:
+    u=models.User(username=user.username, email=user.email, password=user.password)
+    db.add(u)
+    db.commit()
+    db.refresh(u)
+    return u

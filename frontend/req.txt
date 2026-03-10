@@ -1,0 +1,209 @@
+/Users/ahmadshahbaz/.zprofile:1: no such file or directory: /opt/homebrew/bin/brew
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git add .
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git status
+
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   backend/app/__pycache__/crud.cpython-314.pyc
+        modified:   backend/app/__pycache__/main.cpython-314.pyc
+        new file:   backend/app/__pycache__/models.cpython-314.pyc
+        new file:   backend/app/__pycache__/schemas.cpython-314.pyc
+        modified:   backend/app/crud.py
+        modified:   backend/app/main.py
+        modified:   backend/app/models.py
+        new file:   backend/app/routers/__pycache__/__init__.cpython-314.pyc
+        new file:   backend/app/routers/__pycache__/categories.cpython-314.pyc
+        new file:   backend/app/routers/__pycache__/tasks.cpython-314.pyc
+        modified:   backend/app/routers/categories.py
+        modified:   backend/app/routers/tasks.py
+        modified:   backend/taskmanager.db
+
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git commit
+ -m "Completed Backend :)"
+[main fa859f5] Completed Backend :)
+ Committer: Ahmad Shahbaz <ahmadshahbaz@Exponentos-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 13 files changed, 180 insertions(+)
+ create mode 100644 backend/app/__pycache__/crud.cpython-314.pyc
+ create mode 100644 backend/app/__pycache__/models.cpython-314.pyc
+ create mode 100644 backend/app/__pycache__/schemas.cpython-314.pyc
+ create mode 100644 backend/app/routers/__pycache__/__init__.cpython-314.pyc
+ create mode 100644 backend/app/routers/__pycache__/categories.cpython-314.pyc
+ create mode 100644 backend/app/routers/__pycache__/tasks.cpython-314.pyc
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git push o
+rigin main
+Enumerating objects: 31, done.
+Counting objects: 100% (27/27), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (20/20), 12.83 KiB | 3.21 MiB/s, done.
+Total 20 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To github.com:m-ahmad3/task-manager-fullstack.git
+   b7e10c1..fa859f5  main -> main
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git add .
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git commit
+ -m "Added CORS"
+[main 92abee8] Added CORS
+ Committer: Ahmad Shahbaz <ahmadshahbaz@Exponentos-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 7 insertions(+)
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git push o
+rigin main
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 1.57 KiB | 1.57 MiB/s, done.
+Total 8 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To github.com:m-ahmad3/task-manager-fullstack.git
+   fa859f5..92abee8  main -> main
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % npm create
+ vite@latest frontend -- --template react
+
+> npx
+> "create-vite" frontend --template react
+
+│
+◇  Use Vite 8 beta (Experimental)?:
+│  No
+│
+◇  Install with npm and start now?
+│  No
+│
+◇  Scaffolding project in /Users/ahmadshahbaz/Desktop/task-manager-fullstack/frontend...
+│
+└  Done. Now run:
+
+  cd frontend
+  npm install
+  npm run dev
+
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % cd fronten
+d
+ahmadshahbaz@Exponentos-MacBook-Pro frontend % npm install
+
+added 156 packages, and audited 157 packages in 26s
+
+33 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+ahmadshahbaz@Exponentos-MacBook-Pro frontend % npm install react-router
+-dom lucide-react axios 
+
+added 29 packages, and audited 186 packages in 5s
+
+40 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+ahmadshahbaz@Exponentos-MacBook-Pro frontend % npm install -D tailwindc
+ss postcss autoprefixer
+
+added 4 packages, and audited 190 packages in 2s
+
+42 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+ahmadshahbaz@Exponentos-MacBook-Pro frontend % npx tailwindcss init -p
+npm error could not determine executable to run
+npm error A complete log of this run can be found in: /Users/ahmadshahbaz/.npm/_logs/2026-03-09T01_54_51_764Z-debug-0.log
+ahmadshahbaz@Exponentos-MacBook-Pro frontend % npm install -D tailwindcss@3
+
+added 56 packages, changed 1 package, and audited 246 packages in 4s
+
+55 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+ahmadshahbaz@Exponentos-MacBook-Pro frontend % npx tailwindcss init -p
+
+Created Tailwind CSS config file: tailwind.config.js
+Created PostCSS config file: postcss.config.js
+ahmadshahbaz@Exponentos-MacBook-Pro frontend % cd ..
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git commit -m "Initialized FrontEnd"               
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   backend/app/__pycache__/main.cpython-314.pyc
+        modified:   backend/app/main.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        frontend/
+        req.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git add .
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git commit -m "Initialized FrontEnd"
+[main 293e38b] Initialized FrontEnd
+ Committer: Ahmad Shahbaz <ahmadshahbaz@Exponentos-MacBook-Pro.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 18 files changed, 4420 insertions(+), 1 deletion(-)
+ create mode 100644 frontend/.gitignore
+ create mode 100644 frontend/README.md
+ create mode 100644 frontend/eslint.config.js
+ create mode 100644 frontend/index.html
+ create mode 100644 frontend/package-lock.json
+ create mode 100644 frontend/package.json
+ create mode 100644 frontend/postcss.config.js
+ create mode 100644 frontend/public/vite.svg
+ create mode 100644 frontend/src/App.css
+ create mode 100644 frontend/src/App.jsx
+ create mode 100644 frontend/src/assets/react.svg
+ create mode 100644 frontend/src/index.css
+ create mode 100644 frontend/src/main.jsx
+ create mode 100644 frontend/tailwind.config.js
+ create mode 100644 frontend/vite.config.js
+ create mode 100644 req.txt
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % git push o
+rigin main
+Enumerating objects: 33, done.
+Counting objects: 100% (33/33), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (24/24), done.
+Writing objects: 100% (27/27), 40.27 KiB | 5.75 MiB/s, done.
+Total 27 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
+To github.com:m-ahmad3/task-manager-fullstack.git
+   92abee8..293e38b  main -> main
+ahmadshahbaz@Exponentos-MacBook-Pro task-manager-fullstack % 
